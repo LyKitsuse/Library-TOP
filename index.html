@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-bold-rounded/css/uicons-bold-rounded.css'>
+    <title>Document</title>
+</head>
+<body>
+    <div class="header">
+         <button class="newBook"><i class="fi fi-br-plus"></i></button>
+         
+    </div>
+
+    <dialog close class="newBookDialog">
+            <h4>New Book!</h4>
+            <form method="dialog">
+                <span>
+                    <label for="bookName">Name:</label>
+                    <input type="text" id="bookName">
+                </span>
+                
+                <span>
+                    <label for="bookAuthor">Author:</label>
+                    <input type="input" id="bookAuthor">
+                </span>
+                
+                <span>
+                    <label for="bookAbout">About:</label>
+                    <input type="input" id="bookAbout">
+                </span>
+                <button type="submit" class="submit">OK</button>
+            </form>
+        </dialog>
+        
+    <div class="container">
+        
+        <div class="card">
+            <div class="left-bar"></div>
+            <div class="card-content">
+                <div class="contents">
+                    <h2 class="currBookName">Book Name</h2>
+                    <h4 class="currBookAuthor">Author Name</h4>
+                    <p class="currBookDesc">Lorem ipsum dolor sit amet. </p>
+                </div>
+                
+                <div class="buttons">
+                    <div class="read_toggle">
+                        <button class="toggle">Read</button>
+                    </div>
+                    <div class="link_icons">
+                        <button class="trash"><i class="fi fi-br-trash"></i></button>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

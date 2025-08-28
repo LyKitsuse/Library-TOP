@@ -1,0 +1,146 @@
+:root {
+    --main-color: #001BB7;
+    --sub-color: #0046FF;
+    --min-color: #FF8040;
+    --bg-color: #E9E9E9;
+}
+
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: var(--bg-color);
+    margin: 0px;
+}
+
+.header:not(.newBookDialog){
+    height: 8vh;
+    background-color: var(--main-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .newBook {
+        background-color: var(--main-color);
+
+        i {
+            font-size: 20pt;
+            color: white;
+        }
+
+        i:hover {
+            color: var(--min-color);
+        }
+    }
+}
+
+.newBookDialog {
+        
+
+        form {
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+        
+            span {
+                margin-bottom: 10px;
+
+                display: flex;
+                justify-content: space-between;
+            }
+        }   
+    }
+
+.container {
+    
+    padding: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(200px, 300px));
+    gap: 20px;
+    height: 1000px;
+
+    .card {
+        display: flex;
+        background: white;
+        border-radius: 8px;
+        height: 50vh;
+        width: 40vh;
+        box-shadow: var(--box-shadow);
+        overflow: hidden;
+        height: auto;
+
+        .left-bar {
+            width: 15px;
+            background-color: var(--main-color);
+        }
+
+        .card-content {
+            padding: 16px;
+            display: flex;
+            flex-grow: 1;
+            flex-direction: column;
+            justify-content:space-between;
+
+            .contents {
+                max-width: auto;
+            }
+
+            h3 {
+                margin: 0;
+                font-size: 1.1em;
+            }
+
+            p {
+                color: #555;
+                font-size: 0.9em;
+                margin: 8px 0 16px;
+            }
+
+            .buttons {
+                display: flex;
+                flex-direction: row;
+                height: 5vh;
+                justify-content: space-between;
+                align-items: center;
+
+                .read_toggle button {
+                    border: none;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background-color: lightgreen;
+                    border-radius: 50px;
+                    width: 9em;
+                    height: 2.5em;
+                }
+
+                .read_toggle button:hover {
+                    cursor: pointer;
+                }
+
+                .link_icons {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: end;
+
+                    button {
+                        background-color: white;
+                        border: none;
+                    }
+                
+                    i {
+                        font-size: 1.5rem;
+                        padding: 10px;
+                        transition: 0.2s;
+                    }
+
+                    i:hover {
+                        color: var(--sub-color);
+                        cursor: pointer;
+                    }
+                }
+            }
+            
+        }
+    }
+}
+
