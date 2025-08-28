@@ -15,6 +15,8 @@ function addBookToLibrary(name, author, about) {
   document.querySelector('#bookName').value = "";
   document.querySelector('#bookAuthor').value = "";
   document.querySelector('#bookAbout').value = "";
+
+  updateLibrary();
 }
 
 /**
@@ -26,6 +28,8 @@ const newBookDialog = document.querySelector(".newBookDialog");
 const submitBtn = document.querySelector(".submit");
 const trashBtn = document.querySelector(".trash");
 const toggle = document.querySelector(".toggle");
+const card = document.querySelector(".card");
+const container = document.querySelector(".container");
 
 newBookBtn.addEventListener("click", (e) => {
   newBookDialog.show();
@@ -55,9 +59,28 @@ toggle.addEventListener("click", (e) => {
   
 })
 
+function updateLibrary() {
+  container.innerHTML = '';
+  for(let i = 0; i < myLibrary.length; i++) {
+
+    console.log(myLibrary[i]);
+    const clonedParent = card.cloneNode(true);
+    container.appendChild(clonedParent);
+
+    const bookName = clonedParent.querySelector('.currBookName');
+    const bookAuthor = clonedParent.querySelector('.currBookAuthor');
+    const bookDesc = clonedParent.querySelector('.currBookDesc');
+
+    bookName.textContent = myLibrary[i].name;
+    bookAuthor.textContent = myLibrary[i].author;
+    bookDesc.textContent = myLibrary[i].about;
+  }
+}
+
 /**
  * / Add book
- * - Add Books into the Dom after submitting
- * - Add Books from Array into DOM one by one
+ * / Add Books into the Dom after submitting
+ * / Add Books from Array into DOM one by one
+ * - Add a unique ID for each Book Card
  * - Remove Book from Array and Update the Site
  */
