@@ -1,17 +1,20 @@
 const myLibrary = [];
 
-function Book(name, author, pages) {
+function Book(name, author, about) {
   this.name = name;
   this.author = author;
   this.about = about;
   this.isRead = true;
 }
 
-function addBookToLibrary(name, author, pages) {
+function addBookToLibrary(name, author, about) {
   // take params, create a book then store it in the array
-  let book = new Book(name, author, pages);
+  let book = new Book(name, author, about);
   console.log(book.name);
   myLibrary.push(book);
+  document.querySelector('#bookName').value = "";
+  document.querySelector('#bookAuthor').value = "";
+  document.querySelector('#bookAbout').value = "";
 }
 
 /**
@@ -29,8 +32,7 @@ newBookBtn.addEventListener("click", (e) => {
 });
 
 submitBtn.addEventListener("click", (e) => {
-  addBookToLibrary(document.querySelector('#bookName'), document.querySelector('#bookAuthor'), document.querySelector('#'));
-
+  addBookToLibrary(document.querySelector('#bookName').value, document.querySelector('#bookAuthor').value, document.querySelector('#bookAbout').value);
 });
 
 trashBtn.addEventListener("click", (e) => {
@@ -52,3 +54,10 @@ toggle.addEventListener("click", (e) => {
   }
   
 })
+
+/**
+ * / Add book
+ * - Add Books into the Dom after submitting
+ * - Add Books from Array into DOM one by one
+ * - Remove Book from Array and Update the Site
+ */
