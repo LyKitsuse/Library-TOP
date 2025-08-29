@@ -20,10 +20,12 @@ body {
 
     .newBook {
         background-color: var(--main-color);
-
+        border: none;
         i {
             font-size: 20pt;
             color: white;
+            cursor: pointer;
+            transition: 0.2s;
         }
 
         i:hover {
@@ -97,7 +99,7 @@ body {
                 margin: 8px 0 16px;
             }
 
-            .buttons {
+            .buttons:not(.newBook) {
                 display: flex;
                 flex-direction: row;
                 height: 5vh;
@@ -113,10 +115,12 @@ body {
                     border-radius: 50px;
                     width: 9em;
                     height: 2.5em;
+                    transition: 0.3s;
                 }
 
                 .read_toggle button:hover {
                     cursor: pointer;
+                    background-color: var(--min-color);
                 }
 
                 .link_icons {

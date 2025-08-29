@@ -61,7 +61,8 @@ function updateLibrary() {
     toggle.addEventListener("click", (e) => {
       const thisCard = e.target.closest(".card");
       const toggle = clonedParent.querySelector(".toggle");
-      changeColor(thisCard, toggle, i);  
+      changeReadStatus(thisCard, i);   
+      changeColor(thisCard, toggle, i);
     })
 
     const trashBtn = clonedParent.querySelector(".trash");
@@ -72,19 +73,21 @@ function updateLibrary() {
   }
 }
 
+// Broken
 function changeColor(thisCard, toggle, i){
-  if(toggle.style.backgroundColor == "lightgreen" || !myLibrary[i].isRead){
-    changeReadStatus(1, thisCard, i);
-
+  if(!myLibrary[i].isRead){
     toggle.style.backgroundColor = "Red";
     toggle.textContent = "Not Read"
   }
   else {
-
-    changeReadStatus(0, thisCard, i);
     toggle.style.backgroundColor = "lightgreen";
     toggle.textContent = "Read"
   }
+}
+
+function changeReadStatus(parent, i){
+    myLibrary[i].isRead = !myLibrary[i].isRead;
+    console.log(myLibrary[i].isRead);
 }
 
 function deleteBook(card){
@@ -98,29 +101,4 @@ function deleteBook(card){
   }  
 }
 
-// Broken
-function changeReadStatus(num, parent, i){
-  for(let i = 0; i < myLibrary.length; i++){
-    if(parent.getAttribute('id') == myLibrary[i].id){
-      
-      if(num == 1){
-        console.log("Not Read");
-        myLibrary[i].isRead = false;
-      }
-      else {
-        console.log("Read");
-        myLibrary[i].isRead = true;
-      }
-      break;
-    }
-  }
-}
-
-/**
- * / Add book
- * / Add Books into the Dom after submitting
- * / Add Books from Array into DOM one by one
- * / Add a unique ID for each Book Card
- * / Remove Book from Array and Update the Site
- * / Fix Read Books after the Site Updates
- */
+//TODO: Fix Read
