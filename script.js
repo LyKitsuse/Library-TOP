@@ -1,22 +1,21 @@
 const myLibrary = [];
 
-function Book(name, author, about) {
+function Book(name, author, about, status) {
   this.name = name;
   this.author = author;
   this.about = about;
-  this.isRead = true;
+  this.isRead = status;
   this.id = crypto.randomUUID();
 }
 
 function addBookToLibrary(name, author, about) {
   // take params, create a book then store it in the array
-  let book = new Book(name, author, about);
+  let book = new Book(name, author, about, true);
   console.log(book.name);
   myLibrary.push(book);
   document.querySelector('#bookName').value = "";
   document.querySelector('#bookAuthor').value = "";
   document.querySelector('#bookAbout').value = "";
-
   updateLibrary();
 }
 
@@ -43,8 +42,6 @@ submitBtn.addEventListener("click", (e) => {
 function updateLibrary() {
   container.innerHTML = '';
   for(let i = 0; i < myLibrary.length; i++) {
-
-    console.log(myLibrary[i].id);
     const clonedParent = card.cloneNode(true);
     container.appendChild(clonedParent);
 
@@ -57,15 +54,14 @@ function updateLibrary() {
     bookDesc.textContent = myLibrary[i].about;
     clonedParent.setAttribute("id", myLibrary[i].id);
 
-    
-
     const toggle = clonedParent.querySelector(".toggle");
+    
     changeColor(clonedParent, toggle, i);
 
     toggle.addEventListener("click", (e) => {
-      // do some Object shit
       const thisCard = e.target.closest(".card");
-      changeColor(thisCard, toggle, i);     
+      const toggle = clonedParent.querySelector(".toggle");
+      changeColor(thisCard, toggle, i);  
     })
 
     const trashBtn = clonedParent.querySelector(".trash");
@@ -77,15 +73,15 @@ function updateLibrary() {
 }
 
 function changeColor(thisCard, toggle, i){
-  if(toggle.style.backgroundColor == "lightgreen" || myLibrary[i].isRead){
-    changeReadStatus(1, thisCard);
+  if(toggle.style.backgroundColor == "lightgreen" || !myLibrary[i].isRead){
+    changeReadStatus(1, thisCard, i);
 
     toggle.style.backgroundColor = "Red";
     toggle.textContent = "Not Read"
   }
   else {
 
-    changeReadStatus(0, thisCard);
+    changeReadStatus(0, thisCard, i);
     toggle.style.backgroundColor = "lightgreen";
     toggle.textContent = "Read"
   }
@@ -102,8 +98,8 @@ function deleteBook(card){
   }  
 }
 
-
-function changeReadStatus(num, parent){
+// Broken
+function changeReadStatus(num, parent, i){
   for(let i = 0; i < myLibrary.length; i++){
     if(parent.getAttribute('id') == myLibrary[i].id){
       
@@ -126,5 +122,5 @@ function changeReadStatus(num, parent){
  * / Add Books from Array into DOM one by one
  * / Add a unique ID for each Book Card
  * / Remove Book from Array and Update the Site
- * - Fix Read Books after the Site Updates
+ * / Fix Read Books after the Site Updates
  */
